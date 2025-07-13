@@ -106,3 +106,48 @@ This project relies on the following Rust dependencies, as specified in `Cargo.t
 *   `rust_decimal`: For fixed-point arithmetic, crucial for precise monetary calculations.
 *   `rust_decimal_macros`: Macros for `rust_decimal`.
 *   `tokio`: An asynchronous runtime for building fast, reliable, and small applications.
+
+## Payment Gateway Integration Examples
+
+This project includes example code demonstrating how to integrate with external payment gateways.
+
+### Stripe Integration
+
+The `src/payment_gateway.rs` module provides an example of how to interact with the Stripe API to create and manage payment intents.
+
+*   **`create_stripe_payment_intent`**: Demonstrates creating a new Payment Intent.
+*   **`confirm_stripe_payment_intent`**: A simplified example of confirming a Payment Intent.
+
+**Dependencies**:
+*   `stripe` crate: Rust bindings for the Stripe HTTP API.
+
+**To run Stripe integration tests**:
+You will need a Stripe secret key. Set it as an environment variable before running the tests:
+```bash
+STRIPE_SECRET_KEY=sk_test_YOUR_KEY cargo test -- --nocapture
+```
+Replace `sk_test_YOUR_KEY` with your actual Stripe test secret key. These tests are marked with `#[ignore]` as they require an active internet connection and a valid Stripe account.
+
+### Cryptocurrency Payment Examples (Bitcoin & Ethereum)
+
+The `src/crypto_payment.rs` module provides basic examples for handling Bitcoin and Ethereum payments. It focuses on address generation and includes placeholder functions for balance checks.
+
+**Key functionalities**:
+*   **`generate_bitcoin_address`**: Generates a new Bitcoin address (P2WPKH - SegWit) for receiving payments.
+*   **`check_bitcoin_balance`**: A placeholder function. In a real application, this would connect to a Bitcoin node or a block explorer API (e.g., Blockstream Esplora) to monitor the address for incoming transactions and confirm balances.
+*   **`generate_ethereum_address`**: Generates a new Ethereum address for receiving payments.
+*   **`check_ethereum_balance`**: A placeholder function. In a real application, this would connect to an Ethereum node (e.g., via Infura, Alchemy) to monitor the address and confirm balances.
+
+**Important Considerations for Production**:
+*   **Key Management**: Securely manage private keys. The examples use randomly generated keys for simplicity; in production, you would use deterministic key generation (e.g., BIP39 mnemonics) and robust key storage solutions.
+*   **Transaction Monitoring**: A full implementation requires continuous monitoring of generated addresses on the respective blockchains to detect incoming payments and confirm their status (e.g., number of confirmations). This typically involves running your own blockchain node or using a reliable third-party blockchain API service.
+*   **Error Handling**: Implement comprehensive error handling for network issues, API failures, and blockchain-specific errors.
+*   **Security**: Ensure all interactions with blockchain networks or third-party APIs are secure, using HTTPS and proper authentication.
+*   **Exchange Rates**: For payments in fiat equivalents, you'll need to integrate with a reliable cryptocurrency exchange rate API.
+
+**Dependencies**:
+*   `bitcoin` crate: For Bitcoin primitives.
+*   `bdk` crate: For Bitcoin wallet functionality (address generation).
+*   `ethers` crate: For Ethereum interaction (address generation).
+*   `rand` crate: For random number generation.
+*   `hex` crate: For hex encoding/decoding.

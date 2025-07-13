@@ -8,6 +8,15 @@ criterion = { version = "0.6.0", features = ["async_tokio"] }
 rust_decimal = { version = "1.37.2", features = ["serde-with-str"] }
 rust_decimal_macros = "1.37.1"
 tokio = { version = "1.46.1", features = ["full"] }
+async-stripe = { version = "0.28.1", features = ["runtime-tokio-hyper"] } # Added for Stripe integration example
+
+# Crypto Payment Dependencies
+bitcoin = "0.31.1" # For Bitcoin primitives
+bdk_wallet = { version = "2.0.0", features = ["keys-bip39"] } # For Bitcoin wallet functionality
+ethers = { version = "2.0.14", features = ["rustls", "ws"] } # For Ethereum interaction
+rand = "0.8.5" # For random number generation (used by bdk and ethers for key generation)
+hex = "0.4.3" # For hex encoding/decoding
+
 
 [[bench]]
 name = "payment_processing"
