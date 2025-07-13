@@ -1,4 +1,4 @@
-## Applying this RealTimeStreamingPaymentEngine to a Payment Gateway
+## Introduction
 
 This `real_time_streaming_payment_engine` project provides the foundational, high-performance core for a real-time payment streaming engine. In a full-fledged payment gateway, this engine would be a critical component responsible for the accurate and efficient processing of financial transactions.
 
