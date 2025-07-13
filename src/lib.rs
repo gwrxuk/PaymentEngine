@@ -1,6 +1,5 @@
-
-use tokio::sync::mpsc;
 use rust_decimal::Decimal;
+use tokio::sync::mpsc;
 
 #[derive(Debug, Clone)]
 pub struct Payment {

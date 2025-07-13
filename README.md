@@ -1,6 +1,6 @@
-## Applying this Project to a Payment Gateway
+## Applying this RealTimeStreamingPaymentEngine to a Payment Gateway
 
-This project provides the foundational, high-performance core for a real-time payment streaming engine. In a full-fledged payment gateway, this engine would be a critical component responsible for the accurate and efficient processing of financial transactions.
+This `real_time_streaming_payment_engine` project provides the foundational, high-performance core for a real-time payment streaming engine. In a full-fledged payment gateway, this engine would be a critical component responsible for the accurate and efficient processing of financial transactions.
 
 ### Architectural Integration
 
@@ -40,3 +40,69 @@ To evolve this core engine into a complete payment gateway component, you might 
 *   **Security**: Implement encryption for sensitive data, secure communication channels, and access controls.
 
 This project serves as a strong, high-quality foundation for the most critical part of any payment gateway: the reliable and precise processing of money.
+
+## Setup
+
+To set up and run this project, you will need:
+
+*   Rust programming language (version 1.70 or newer recommended). You can install it using `rustup`:
+    ```bash
+    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+    ```
+    Ensure you have the `stable` toolchain installed.
+
+Once Rust is installed, navigate to the project root directory and use Cargo (Rust's package manager and build system) to build and run the project.
+
+### Build
+
+To build the project in debug mode:
+
+```bash
+cargo build
+```
+
+To build the project in release mode (optimized for performance):
+
+```bash
+cargo build --release
+```
+
+### Run
+
+To run the main application:
+
+```bash
+cargo run
+```
+
+To run the benchmarks:
+
+```bash
+cargo bench
+```
+
+### Tests
+
+To run the unit and integration tests:
+
+```bash
+cargo test
+```
+
+### Linting and Formatting
+
+To check code style and potential issues:
+
+```bash
+cargo clippy
+cargo fmt
+```
+
+## Requirements
+
+This project relies on the following Rust dependencies, as specified in `Cargo.toml`:
+
+*   `criterion`: For benchmarking.
+*   `rust_decimal`: For fixed-point arithmetic, crucial for precise monetary calculations.
+*   `rust_decimal_macros`: Macros for `rust_decimal`.
+*   `tokio`: An asynchronous runtime for building fast, reliable, and small applications.

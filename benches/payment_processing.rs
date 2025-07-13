@@ -1,6 +1,5 @@
-
-use criterion::{criterion_group, criterion_main, Criterion};
-use payment_engine::{Payment, process_payments};
+use criterion::{Criterion, criterion_group, criterion_main};
+use real_time_streaming_payment_engine::{Payment, process_payments};
 use rust_decimal::Decimal;
 use std::hint::black_box;
 use tokio::runtime::Runtime;

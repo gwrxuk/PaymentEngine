@@ -1,16 +1,13 @@
-
-use payment_engine::{Payment, process_payments};
-use tokio::sync::mpsc;
+use real_time_streaming_payment_engine::{Payment, process_payments};
 use rust_decimal::Decimal;
 use rust_decimal_macros::dec;
+use tokio::sync::mpsc;
 
 #[tokio::main]
 async fn main() {
     let (tx, rx) = mpsc::channel(100);
 
-    let processor_handle = tokio::spawn(async move {
-        process_payments(rx).await
-    });
+    let processor_handle = tokio::spawn(async move { process_payments(rx).await });
 
     for i in 0..10 {
         let payment = Payment {
